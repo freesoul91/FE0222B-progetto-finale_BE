@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Elenco Clienti - Bootstrap Pagination</title>
+<base href="/">
+<link th:rel="stylesheet"
+	th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} " />
+
+</head>
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		<div class="container">
+			<a class="navbar-brand" href="/">Elenco Clienti - Epic Energy
+				System</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config">Services</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="https://github.com/danielecerulli">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 mt-5 mb-5">
+				<table id="posts" class="table table-bordered table-responsive-sm">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Ragione Sociale</th>
+							<th>Tipo cliente</th>
+							<th>Data inserimento</th>
+							<th>Data ultimo contatto</th>
+							<th>Email</th>
+							<th>Telefono</th>
+							<th>Pec</th>
+							<th>Iva</th>
+							<th>Nome contatto</th>
+							<th>Cognome contatto</th>
+							<th>Email contatto</th>
+							<th>Telefono contatto</th>
+							<th>Sede legale</th>
+							<th>Sede Operativa</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="post : ${posts.page}">
+							<td th:text="${post.id}">ID</td>
+							<td th:text="${post.ragioneSociale}">Ragione sociale</td>
+							<td th:text="${post.tipoCliente}">Tipo cliente</td>
+							<td th:text="${post.dataInserimento}">Data inserimento</td>
+							<td th:text="${post.dataUltimoContatto}">Data ultimo contatto</td>
+							<td th:text="${post.email}">Email</td>
+							<td th:text="${post.telefono}">Telefono</td>
+							<td th:text="${post.pec}">Pec</td>
+							<td th:text="${post.iva}">Iva</td>
+							<td th:text="${post.nomeContatto}">Nome contatto</td>
+							<td th:text="${post.cognomeContatto}">Cognome contatto</td>
+							<td th:text="${post.emailContatto}">Email contatto</td>
+							<td th:text="${post.telefonoContatto}">Telefono contatto</td>
+							<td th:text="${post.sedeLegale.toString()}">Sede legale</td>
+							<td th:text="${post.sedeOperativa.toString()}">Sede operativa</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<nav aria-label="Page navigation" class="paging">
+					<ul class="pagination" th:if="${posts.page.totalPages > 1}">
+						<li class="page-item"
+							th:classappend="${!posts.paging.isPrevEnabled()? 'disabled' : ''}">
+							<a class="page-link"
+							th:href="@{'/clientibootstrap/mostraelenco?pageNumber=' + ${posts.paging.pageNumber - 1}}"
+							tabindex="-1">Previous</a>
+						</li>
+						<th:block th:each="item : ${posts.paging.getItems()}">
+							<li class="page-item"
+								th:classappend="${item.index == posts.paging.pageNumber? 'active' : ''}"
+								th:if="${item.pageItemType.name() == 'PAGE'}"><a
+								class="page-link"
+								th:href="@{'/clientibootstrap/mostraelenco?pageNumber=' + ${item.index}}"
+								th:text="${item.index}"></a></li>
+							<li class="page-item disabled"
+								th:if="${item.pageItemType.name() == 'DOTS'}"><a
+								class="page-link" href="#">...</a></li>
+						</th:block>
+						<li class="page-item"
+							th:classappend="${!posts.paging.isNextEnabled()? 'disabled' : ''}">
+							<a class="page-link"
+							th:href="@{'/clientibootstrap/mostraelenco?pageNumber=' + ${posts.paging.pageNumber + 1}}">Next</a>
+						</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>

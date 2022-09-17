@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Epic Energy System - Lista comuni italiani</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+<body>
+	<div class="header-menu">Epic Energy System</div>
+	<div class="header-section">Elenco comuni:</div>
+	<div th:switch="${!listaComuni.hasContent()}">
+		<div class="no-item-found" th:case="true">Nessun comune trovato!</div>
+		<!-- * for default case -->
+		<div th:case="*">
+			<table width="100%">
+				<thead>
+					<tr>
+						<th class="header">Nome comune</th>
+						<th class="header">Nome provincia</th>
+						<th class="header">Sigla provincia</th>
+						<th class="header">Regione</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="comune : ${listaComuni}">
+						<td th:text="${comune.nome}"></td>
+						<td th:text="${comune.provincia.nome}"></td>
+						<td th:text="${comune.provincia.sigla}"></td>
+						<td th:text="${comune.provincia.regione}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="link-home">
+				<a href="/">Torna alla Home</a>
+			</div>
+			<div class="footer">Daniele Cerulli</div>
+</body>
+</html>

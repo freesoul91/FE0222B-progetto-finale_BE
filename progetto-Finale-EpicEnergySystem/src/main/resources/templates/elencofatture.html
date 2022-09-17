@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Epic Energy System - Lista fatture</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+<body>
+	<div class="header-menu">Epic Energy System</div>
+	<div class="header-section">Elenco fatture:</div>
+	<div th:switch="${!listaFatture.hasContent()}">
+		<div class="no-item-found" th:case="true">Nessuna fattura
+			trovata!</div>
+		<!-- * for default case -->
+		<div class="link-home">
+			<a href="/">Torna alla Home</a>
+		</div>
+		<div th:case="*">
+			<table width="100%">
+				<thead>
+					<tr>
+						<th class="header">Cliente (rag. sociale)</th>
+						<th class="header">Anno</th>
+						<th class="header">Data</th>
+						<th class="header">Importo</th>
+						<th class="header">Numero fattura</th>
+						<th class="header">Stato</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="fattura : ${listaFatture}">
+						<td th:text="${fattura.cliente.ragioneSociale}"></td>
+						<td th:text="${fattura.anno}"></td>
+						<td th:text="${fattura.data}"></td>
+						<td th:text="${fattura.importo}"></td>
+						<td th:text="${fattura.numeroFattura}"></td>
+						<td th:text="${fattura.stato}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="link-home">
+				<a href="/">Torna alla Home</a>
+			</div>
+			<div class="footer">Daniele Cerulli</div>
+</body>
+</html>

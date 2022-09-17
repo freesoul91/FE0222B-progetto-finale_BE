@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Epic Energy System - Lista clienti</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/layout.css}" />
+</head>
+<body>
+	<div class="header-menu">Epic Energy System</div>
+	<div class="header-section">Elenco clienti:</div>
+	<div th:switch="${!listaClienti.hasContent()}">
+		<div class="no-item-found" th:case="true">Nessun cliente
+			trovato!</div>
+		<div class="link-home">
+			<a href="/">Torna alla Home</a>
+		</div>
+		<!-- * for default case -->
+		<div th:case="*">
+			<table width="100%">
+				<thead>
+					<tr>
+						<th class="header">Ragione sociale</th>
+						<th class="header">Tipo cliente</th>
+						<th class="header">Sede legale</th>
+						<th class="header">Sede Operativa</th>
+						<th class="header">PEC</th>
+						<th class="header">Email</th>
+						<th class="header">Telefono</th>
+						<th class="header">P.Iva</th>
+						<th class="header">Fatturato annuale</th>
+						<th class="header">Nome contatto</th>
+						<th class="header">Cognome contatto</th>
+						<th class="header">Telefono contatto</th>
+						<th class="header">Email contatto</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="cliente : ${listaClienti}">
+						<td th:text="${cliente.ragioneSociale}"></td>
+						<td th:text="${cliente.tipoCliente}"></td>
+						<td th:text="${cliente.sedeLegale}"></td>
+						<td th:text="${cliente.sedeOperativa}"></td>
+						<td th:text="${cliente.pec}"></td>
+						<td th:text="${cliente.email}"></td>
+						<td th:text="${cliente.telefono}"></td>
+						<td th:text="${cliente.iva}"></td>
+						<td th:text="${cliente.fatturatoAnnuale}"></td>
+						<td th:text="${cliente.nomeContatto}"></td>
+						<td th:text="${cliente.cognomeContatto}"></td>
+						<td th:text="${cliente.telefonoContatto}"></td>
+						<td th:text="${cliente.emailContatto}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="link-home">
+				<a href="/">Torna alla Home</a>
+			</div>
+			<div class="footer">Daniele Cerulli</div>
+</body>
+</html>

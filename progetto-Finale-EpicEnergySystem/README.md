@@ -1,5 +1,4 @@
 # BE-progetto-Finale-EpicEnergySystem
-Progetto Finale del corso Epicode BE "Epic Energy System"
 
 Tecnologie utilizzate:
 
@@ -159,4 +158,4 @@ Cliccando sul bottone "Authorize" ed inserendo il JWT dopo aver effettuato il lo
 
 
 
-Autore: Daniele Cerulli.
+

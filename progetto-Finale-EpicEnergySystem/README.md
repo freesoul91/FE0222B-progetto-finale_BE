@@ -3,13 +3,21 @@
 Tecnologie utilizzate:
 
 -SpringBoot Web starter
+
 -SpringJPA (Hibernate)
+
 -PostgreSQL Driver
+
 -JWT Auth
+
 -Spring Advanced Security Configuration
+
 -Thymeleaf
+
 -BootStrap
+
 -OpenCSV
+
 -Swagger Open Api Docs
 
 Descrizione del progetto:
@@ -19,25 +27,40 @@ con i propri clienti business.
 
 Il sistema, basato su Web Service REST Spring Boot e database PostgreSQL, deve permettere di gestire un elenco dei clienti, che sono caratterizzati dai seguenti dati:
       -ragioneSociale
+      
       -partitaIva
+      
       -email
+      
       -dataInserimento
+      
       -dataUltimoContatto
+      
       -fatturatoAnnuale
+      
       -pec
+      
       -telefono
+      
       -emailContatto
+      
       -nomeContatto
+      
       -cognomeContatto
+      
       -telefonoContatto
 
 Ogni cliente può avere fino a due indirizzi, uno per la sede legale ed uno per la sede operativa.
 
 Un indirizzo è composto da 
       -via
+      
       -civico
+      
       -località
+      
       -cap
+      
       -comune 
 
 I comuni sono gestiti attraverso un'anagrafica centralizza e sono caratterizzati da un nome e da un riferimento ad una provincia, anch'essa gestita 
